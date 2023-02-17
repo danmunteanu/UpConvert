@@ -1,0 +1,7 @@
+
+# Package script into executable
+** run once
+pip install pyinstaller
+
+** will package 
+pyinstaller --onefile upconvert.py
