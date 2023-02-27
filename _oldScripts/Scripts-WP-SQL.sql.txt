@@ -1,0 +1,69 @@
+
+/**	Merged, in Progress **/
+SELECT	*
+FROM	wp_posts
+WHERE ID in (
+	SELECT ID
+	FROM wp_posts WHERE post_type="post" AND post_status = "publish" AND ID IN (
+		SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (
+			SELECT term_taxonomy_id FROM wp_term_taxonomy WHERE taxonomy = "category" AND term_id IN (
+				15
+				)
+			)
+		)
+
+) 
+
+
+wp_term_relationships wtr
+wp_term_taxonomy wtt
+
+wtr.term_taxonomy_id 
+
+/** Update Posts' Date Under One Category **/
+
+UPDATE wp_posts 
+SET post_date = '2022-02-12 10:00:01'
+WHERE ID in (
+	SELECT ID
+	FROM wp_posts WHERE post_type="post" AND post_status = "publish" AND ID IN (
+		SELECT object_id FROM wp_term_relationships WHERE term_taxonomy_id IN (
+			SELECT term_taxonomy_id FROM wp_term_taxonomy WHERE taxonomy = "category" AND term_id IN (
+				31
+				)
+			)
+		)
+
+) 
+
+/* Gets Post Data */
+SELECT	wp.id,
+		wp.post_title,
+		wp.post_name,
+		wp.post_date,
+		wp.guid,
+		wp.post_content
+FROM	wp_posts wp INNER JOIN
+		wp_term_relationships wtr
+WHERE 	wp.id = wtr.object_id AND
+		wp.post_type="post" AND 
+		wp.post_status = "publish"
+
+
+
+/* Gets Categories And Counts */
+SELECT 	t.term_id,
+		t.name, 
+		t.slug, 
+		tt.count,
+		tt.term_taxonomy_id
+FROM 	wp_terms AS t INNER JOIN
+		wp_term_taxonomy AS tt  
+ON 		t.term_id = tt.term_id
+WHERE 	tt.taxonomy = 'category'
+ORDER BY t.name ASC
+
+
+
+
+
