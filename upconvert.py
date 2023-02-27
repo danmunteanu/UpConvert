@@ -5,6 +5,13 @@ from mutagen import File
 
 removeTags = True
 
+# Nice to have Ideas
+#   - list files to convert to console before converting, ask is this ok? Y/N
+#   - would be nice to convert to other formats, for instance WebM files to mkv or mp4
+#   - would be nice to have a full-fledged interface with Settings page/section
+#   - one of the options is the name of the folder where to dump the converted files to
+#   - 
+
 # Create a Tkinter window
 root = tk.Tk()
 root.withdraw()
