@@ -1,3 +1,5 @@
+# Required
+pip install mutagen
 
 # Package script into executable
 ** run once to install the dependency

@@ -25,7 +25,7 @@ if not os.path.isdir(input_folder):
     exit()
 
 # Set the output folder path
-output_folder = "_convert"
+output_folder = "_upconvert"
 
 # Check if the output folder exists, and create it if it doesn't
 if not os.path.isdir(output_folder):
